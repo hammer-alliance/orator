@@ -23,7 +23,7 @@ export default async function ExercisePage({ params, searchParams }: PageProps) 
 
   if (error || !data) notFound()
 
-  const params_obj: Record<string, unknown> = {}
+  const params_obj: Record<string, string | number | boolean | null> = {}
   for (const [key, value] of Object.entries(sp)) {
     if (key !== 'duration') {
       const num = Number(value)

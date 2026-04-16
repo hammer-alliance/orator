@@ -24,7 +24,7 @@ export default async function CompletePage({ params, searchParams }: PageProps) 
 
   const exercise = data as { id: string; title: string }
 
-  const exerciseParams: Record<string, unknown> = {}
+  const exerciseParams: Record<string, string | number | boolean | null> = {}
   for (const [key, value] of Object.entries(sp)) {
     if (key !== 'duration') {
       const num = Number(value)
