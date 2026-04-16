@@ -11,8 +11,9 @@ type InstructionPanelProps = {
   exercise: ExerciseWithRelations
 }
 
-function parseParams(defaultParams: Record<string, unknown> | null | undefined): OperativeParam[] {
+function parseParams(defaultParams: unknown): OperativeParam[] {
   if (!defaultParams || typeof defaultParams !== 'object' || Array.isArray(defaultParams)) return []
+  const record = defaultParams as Record<string, unknown>
   const PARAM_META: Record<string, Omit<OperativeParam, 'key' | 'value'>> = {
     rounds:              { label: 'Раундов',          type: 'stepper', min: 1, max: 10, step: 1 },
     phase_duration:      { label: 'Длительность фазы', type: 'stepper', min: 2, max: 10, step: 1, unit: 'сек' },
@@ -28,8 +29,8 @@ function parseParams(defaultParams: Record<string, unknown> | null | undefined):
     sentences:           { label: 'Предложений',       type: 'stepper', min: 5, max: 20, step: 1 },
   }
 
-  return Object.entries(defaultParams)
-    .filter(([key]) => key in PARAM_META && typeof defaultParams[key] === 'number')
+  return Object.entries(record)
+    .filter(([key]) => key in PARAM_META && typeof record[key] === 'number')
     .map(([key, value]) => ({
       key,
       value: value as number,
