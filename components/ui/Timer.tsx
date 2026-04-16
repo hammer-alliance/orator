@@ -38,7 +38,11 @@ export function Timer({ durationSeconds, running, onComplete, size = 'lg' }: Tim
 
   useEffect(() => {
     if (remaining === 0 && running) {
-      onComplete?.()
+      // Schedule onComplete for next tick to avoid React state update conflicts
+      const timeoutId = setTimeout(() => {
+        onComplete?.()
+      }, 0)
+      return () => clearTimeout(timeoutId)
     }
   }, [remaining, running, onComplete])
 
