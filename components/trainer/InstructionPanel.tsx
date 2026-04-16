@@ -11,7 +11,8 @@ type InstructionPanelProps = {
   exercise: ExerciseWithRelations
 }
 
-function parseParams(defaultParams: Record<string, unknown>): OperativeParam[] {
+function parseParams(defaultParams: Record<string, unknown> | null | undefined): OperativeParam[] {
+  if (!defaultParams || typeof defaultParams !== 'object' || Array.isArray(defaultParams)) return []
   const PARAM_META: Record<string, Omit<OperativeParam, 'key' | 'value'>> = {
     rounds:              { label: 'Раундов',          type: 'stepper', min: 1, max: 10, step: 1 },
     phase_duration:      { label: 'Длительность фазы', type: 'stepper', min: 2, max: 10, step: 1, unit: 'сек' },
