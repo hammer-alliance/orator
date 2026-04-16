@@ -19,7 +19,7 @@ export default async function ExercisePage({ params, searchParams }: PageProps) 
     .select('id, title')
     .eq('id', slug)
     .eq('is_active', true)
-    .single()
+    .single<{ id: string; title: string }>()
 
   if (error || !data) notFound()
 

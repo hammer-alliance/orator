@@ -18,9 +18,11 @@ export default async function CompletePage({ params, searchParams }: PageProps) 
     .from('exercises')
     .select('id, title')
     .eq('id', slug)
-    .single()
+    .single<{ id: string; title: string }>()
 
   if (error || !data) notFound()
+
+  const exercise = data as { id: string; title: string }
 
   const exerciseParams: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(sp)) {
@@ -33,8 +35,8 @@ export default async function CompletePage({ params, searchParams }: PageProps) 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <CompletionStats
-        exerciseId={data.id}
-        exerciseTitle={data.title}
+        exerciseId={exercise.id}
+        exerciseTitle={exercise.title}
         duration={duration}
         params={exerciseParams}
       />
