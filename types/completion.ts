@@ -1,9 +1,11 @@
+import type { Json } from './database'
+
 export type Completion = {
   id: string
   user_id: string
   exercise_id: string
   duration: number
-  params: Record<string, unknown>
+  params: Json
   completed_at: string
 }
 

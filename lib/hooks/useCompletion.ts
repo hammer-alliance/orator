@@ -27,7 +27,7 @@ export function useCompletion() {
   const saveCompletion = useCallback(async (
     exerciseId: string,
     duration: number,
-    params: Record<string, unknown>
+    params: Record<string, string | number | boolean | null>
   ) => {
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()

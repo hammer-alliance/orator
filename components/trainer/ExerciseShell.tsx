@@ -10,7 +10,7 @@ type ExerciseShellProps = {
   exerciseId: string
   exerciseTitle: string
   duration: number
-  params: Record<string, unknown>
+  params: Record<string, string | number | boolean | null>
 }
 
 type Phase = 'ready' | 'running' | 'paused' | 'done'

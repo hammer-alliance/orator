@@ -1,95 +1,294 @@
-// Auto-generated types matching Orator database schema
-
-export type Block = {
-  id: string
-  title: string
-  description: string | null
-  order_index: number
-}
-
-export type Topic = {
-  id: string
-  block_id: string
-  title: string
-  description: string | null
-  order_index: number
-}
-
-export type Exercise = {
-  id: string
-  topic_id: string
-  title: string
-  instruction: string
-  animation_type: string | null
-  default_duration: number
-  default_params: Record<string, unknown>
-  is_active: boolean
-  order_index: number
-}
-
-export type Recommendation = {
-  id: string
-  title: string
-  body: string
-  url: string | null
-  image_url: string | null
-  exercise_id: string | null
-}
-
-export type Profile = {
-  id: string
-  phone: string | null
-  has_subscription: boolean
-  created_at: string
-}
-
-export type Completion = {
-  id: string
-  user_id: string
-  exercise_id: string
-  duration: number
-  params: Record<string, unknown>
-  completed_at: string
-}
-
-// ─── Supabase generic Database type ───────────────────────────
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
 
 export type Database = {
+  __InternalSupabase: {
+    PostgrestVersion: "14.5"
+  }
   public: {
     Tables: {
       blocks: {
-        Row: Block
-        Insert: Omit<Block, 'id'> & { id?: string }
-        Update: Partial<Omit<Block, 'id'>>
-      }
-      topics: {
-        Row: Topic
-        Insert: Omit<Topic, 'id'> & { id?: string }
-        Update: Partial<Omit<Topic, 'id'>>
-      }
-      exercises: {
-        Row: Exercise
-        Insert: Omit<Exercise, 'id'> & { id?: string }
-        Update: Partial<Omit<Exercise, 'id'>>
-      }
-      recommendations: {
-        Row: Recommendation
-        Insert: Omit<Recommendation, 'id'> & { id?: string }
-        Update: Partial<Omit<Recommendation, 'id'>>
-      }
-      profiles: {
-        Row: Profile
-        Insert: Pick<Profile, 'id'> & Partial<Omit<Profile, 'id'>>
-        Update: Partial<Omit<Profile, 'id'>>
+        Row: {
+          description: string | null
+          id: string
+          order_index: number
+          title: string
+        }
+        Insert: {
+          description?: string | null
+          id?: string
+          order_index?: number
+          title: string
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          order_index?: number
+          title?: string
+        }
+        Relationships: []
       }
       completions: {
-        Row: Completion
-        Insert: Omit<Completion, 'id' | 'completed_at'> & { id?: string; completed_at?: string }
-        Update: Partial<Omit<Completion, 'id'>>
+        Row: {
+          completed_at: string
+          duration: number
+          exercise_id: string
+          id: string
+          params: Json
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          duration: number
+          exercise_id: string
+          id?: string
+          params?: Json
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          duration?: number
+          exercise_id?: string
+          id?: string
+          params?: Json
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "completions_exercise_id_fkey"
+            columns: ["exercise_id"]
+            isOneToOne: false
+            referencedRelation: "exercises"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exercises: {
+        Row: {
+          animation_type: string | null
+          default_duration: number
+          default_params: Json
+          id: string
+          instruction: string
+          is_active: boolean
+          order_index: number
+          title: string
+          topic_id: string
+        }
+        Insert: {
+          animation_type?: string | null
+          default_duration: number
+          default_params?: Json
+          id?: string
+          instruction: string
+          is_active?: boolean
+          order_index?: number
+          title: string
+          topic_id: string
+        }
+        Update: {
+          animation_type?: string | null
+          default_duration?: number
+          default_params?: Json
+          id?: string
+          instruction?: string
+          is_active?: boolean
+          order_index?: number
+          title?: string
+          topic_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exercises_topic_id_fkey"
+            columns: ["topic_id"]
+            isOneToOne: false
+            referencedRelation: "topics"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          has_subscription: boolean
+          id: string
+          phone: string | null
+        }
+        Insert: {
+          created_at?: string
+          has_subscription?: boolean
+          id: string
+          phone?: string | null
+        }
+        Update: {
+          created_at?: string
+          has_subscription?: boolean
+          id?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      recommendations: {
+        Row: {
+          body: string
+          exercise_id: string | null
+          id: string
+          image_url: string | null
+          title: string
+          url: string | null
+        }
+        Insert: {
+          body: string
+          exercise_id?: string | null
+          id?: string
+          image_url?: string | null
+          title: string
+          url?: string | null
+        }
+        Update: {
+          body?: string
+          exercise_id?: string | null
+          id?: string
+          image_url?: string | null
+          title?: string
+          url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recommendations_exercise_id_fkey"
+            columns: ["exercise_id"]
+            isOneToOne: false
+            referencedRelation: "exercises"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      topics: {
+        Row: {
+          block_id: string
+          description: string | null
+          id: string
+          order_index: number
+          title: string
+        }
+        Insert: {
+          block_id: string
+          description?: string | null
+          id?: string
+          order_index?: number
+          title: string
+        }
+        Update: {
+          block_id?: string
+          description?: string | null
+          id?: string
+          order_index?: number
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topics_block_id_fkey"
+            columns: ["block_id"]
+            isOneToOne: false
+            referencedRelation: "blocks"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
-    Views: Record<string, never>
-    Functions: Record<string, never>
-    Enums: Record<string, never>
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
   }
 }
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends { Row: infer R }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] & DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends { Row: infer R }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends { Insert: infer I }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends { Insert: infer I }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends { Update: infer U }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends { Update: infer U }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {},
+  },
+} as const

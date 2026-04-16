@@ -13,6 +13,8 @@ export type ExerciseTopic = {
   order_index: number
 }
 
+import type { Json } from './database'
+
 export type Exercise = {
   id: string
   topic_id: string
@@ -20,7 +22,7 @@ export type Exercise = {
   instruction: string
   animation_type: string | null
   default_duration: number
-  default_params: Record<string, unknown>
+  default_params: Json
   is_active: boolean
   order_index: number
 }
