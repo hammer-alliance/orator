@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx supabase:*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_720db8878f3e6df164a200545f35db50ed44ffcb npx supabase link --project-ref rgjiwasafajndynlcyul --password A8l6HUCMaKI7AxRc)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_720db8878f3e6df164a200545f35db50ed44ffcb npx supabase db remote commit)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_720db8878f3e6df164a200545f35db50ed44ffcb npx supabase migration repair --status applied 20250415000000)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_720db8878f3e6df164a200545f35db50ed44ffcb npx supabase migration list)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_720db8878f3e6df164a200545f35db50ed44ffcb npx supabase gen types typescript --project-id rgjiwasafajndynlcyul)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
+    ]
+  }
+}

@@ -27,7 +27,6 @@ export function Timer({ durationSeconds, running, onComplete, size = 'lg' }: Tim
       setRemaining(prev => {
         if (prev <= 1) {
           clearInterval(intervalRef.current!)
-          onComplete?.()
           return 0
         }
         return prev - 1
@@ -35,7 +34,13 @@ export function Timer({ durationSeconds, running, onComplete, size = 'lg' }: Tim
     }, 1000)
 
     return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-  }, [running, onComplete])
+  }, [running])
+
+  useEffect(() => {
+    if (remaining === 0 && running) {
+      onComplete?.()
+    }
+  }, [remaining, running, onComplete])
 
   const progress = 1 - remaining / durationSeconds
   const minutes = Math.floor(remaining / 60)
