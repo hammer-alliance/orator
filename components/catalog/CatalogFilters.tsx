@@ -19,11 +19,9 @@ const tagBase: React.CSSProperties = {
   padding: '5px 12px',
   fontSize: '12px',
   letterSpacing: '0.04em',
-  border: '1px solid var(--border)',
   borderRadius: '4px',
   cursor: 'pointer',
-  background: 'transparent',
-  transition: 'background 0.15s ease, color 0.15s ease, border-color 0.15s ease',
+  transition: 'background 0.15s ease, color 0.15s ease, border 0.15s ease',
   whiteSpace: 'nowrap',
   fontFamily: 'var(--font-main), sans-serif',
 }
@@ -31,11 +29,13 @@ const tagBase: React.CSSProperties = {
 const tagActive: React.CSSProperties = {
   background: 'var(--text-primary)',
   color: 'var(--bg)',
-  borderColor: 'var(--text-primary)',
+  border: '1px solid var(--text-primary)',
 }
 
 const tagInactive: React.CSSProperties = {
   color: 'var(--text-secondary)',
+  border: '1px solid var(--border)',
+  background: 'transparent',
 }
 
 export function CatalogFilters({
