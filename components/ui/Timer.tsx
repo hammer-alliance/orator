@@ -85,7 +85,7 @@ export function Timer({ durationSeconds, running, onComplete, size = 'lg' }: Tim
           className="transition-all duration-1000"
         />
       </svg>
-      <span className={`font-mono font-semibold tabular-nums text-[var(--color-text)] ${isLarge ? 'text-4xl' : 'text-xl'}`}>
+      <span className={`font-semibold tabular-nums text-[var(--color-text)] ${isLarge ? 'text-4xl' : 'text-xl'}`}>
         {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
       </span>
     </div>

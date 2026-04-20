@@ -12,7 +12,7 @@ export function ParamControl({ param, onChange }: ParamControlProps) {
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between text-sm">
         <label className="font-medium text-[var(--color-text)]">{param.label}</label>
-        <span className="font-mono text-[var(--color-accent)]">
+        <span className="text-[var(--color-accent)]">
           {param.value}{param.unit ? ` ${param.unit}` : ''}
         </span>
       </div>
@@ -41,7 +41,7 @@ export function ParamControl({ param, onChange }: ParamControlProps) {
           >
             −
           </button>
-          <span className="min-w-[3rem] text-center font-mono text-[var(--color-text)]">
+          <span className="min-w-[3rem] text-center text-[var(--color-text)]">
             {param.value}{param.unit ? ` ${param.unit}` : ''}
           </span>
           <button

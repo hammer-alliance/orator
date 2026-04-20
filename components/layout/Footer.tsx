@@ -7,15 +7,17 @@ export function Footer() {
         style={{
           maxWidth: '1100px',
           margin: '0 auto',
-          padding: '0 24px',
-          height: '48px',
+          padding: '24px',
+          minHeight: '48px',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '16px',
+          gap: '6px',
           fontSize: '12px',
           color: 'var(--text-secondary)',
         }}
+        className="sm:flex-row"
       >
         <Link
           href="/privacy"
@@ -23,9 +25,7 @@ export function Footer() {
         >
           Политика конфиденциальности
         </Link>
-        <span style={{ opacity: 0.4 }}>·</span>
-        <span>made with love in 2026</span>
-        <span style={{ opacity: 0.4 }}>·</span>
+        <span>Made with love ♡ in 2026</span>
         <span>© Orator</span>
       </div>
     </footer>

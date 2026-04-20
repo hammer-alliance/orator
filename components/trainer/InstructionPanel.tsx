@@ -76,7 +76,7 @@ export function InstructionPanel({ exercise }: InstructionPanelProps) {
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between text-sm">
             <span className="font-medium text-[var(--color-text)]">Длительность</span>
-            <span className="font-mono text-[var(--color-accent)]">
+            <span className="text-[var(--color-accent)]">
               {durationMin > 0 ? `${durationMin} мин ` : ''}{durationSec > 0 ? `${durationSec} сек` : ''}
             </span>
           </div>

@@ -104,7 +104,7 @@ export function HistoryTable() {
               <td className="px-4 py-3 text-[var(--color-text-muted)]">
                 {c.exercise.topic.title}
               </td>
-              <td className="px-4 py-3 font-mono text-[var(--color-text-muted)]">
+              <td className="px-4 py-3 text-[var(--color-text-muted)]">
                 {formatDuration(c.duration)}
               </td>
             </tr>

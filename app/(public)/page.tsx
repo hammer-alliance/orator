@@ -145,7 +145,7 @@ export default function CatalogPage() {
         <h1
           style={{
             fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 300,
+            fontWeight: 700,
             letterSpacing: '-0.01em',
             color: 'var(--text-primary)',
             margin: 0,
@@ -154,16 +154,6 @@ export default function CatalogPage() {
         >
           Упражнения
         </h1>
-        <p
-          style={{
-            fontSize: '13px',
-            color: 'var(--text-secondary)',
-            margin: 0,
-            letterSpacing: '0.03em',
-          }}
-        >
-          {filtered.length} из {EXERCISES.length}
-        </p>
       </div>
 
       {/* Filters */}

@@ -1,16 +1,11 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Geist_Mono } from 'next/font/google'
+import { Anonymous_Pro } from 'next/font/google'
 import './globals.css'
 
-const dmSans = DM_Sans({
+const anonPro = Anonymous_Pro({
   variable: '--font-main',
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -20,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${dmSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="ru" className={`${anonPro.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)]">
         {children}
       </body>

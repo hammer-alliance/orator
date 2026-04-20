@@ -44,9 +44,9 @@ export function ExerciseCard({ exercise, animationDelay = 0 }: ExerciseCardProps
       style={{
         display: 'flex',
         flexDirection: 'column',
-        background: 'var(--surface)',
-        border: '1px solid var(--border)',
-        borderRadius: '8px',
+        background: '#F5F3EE',
+        border: '2px solid #4A4A47',
+        boxShadow: '4px 4px 0 #4A4A47',
         overflow: 'hidden',
         textDecoration: 'none',
         color: 'inherit',
@@ -69,15 +69,27 @@ export function ExerciseCard({ exercise, animationDelay = 0 }: ExerciseCardProps
           alignItems: 'center',
           justifyContent: 'center',
           padding: '16px',
-          borderBottom: '1px solid var(--border)',
-          background: 'var(--bg)',
         }}
       >
         <Animation />
       </div>
 
       {/* Content */}
-      <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+      <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1, borderTop: '2px solid #4A4A47' }}>
+        {/* Title */}
+        <p
+          style={{
+            fontSize: '16px',
+            fontWeight: 700,
+            color: 'var(--text-primary)',
+            lineHeight: 1.3,
+            margin: 0,
+            fontFamily: 'var(--font-main)',
+          }}
+        >
+          {exercise.title}
+        </p>
+
         {/* Tags row */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
           <span
@@ -85,59 +97,20 @@ export function ExerciseCard({ exercise, animationDelay = 0 }: ExerciseCardProps
               fontSize: '10px',
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
-              color: 'var(--text-secondary)',
-              border: '1px solid var(--border)',
-              borderRadius: '4px',
-              padding: '2px 6px',
+              color: '#1A1A18',
+              background: '#FFD700',
+              padding: '4px 8px',
               fontWeight: 400,
+              fontFamily: 'var(--font-main)',
             }}
           >
             {exercise.block}
           </span>
           <span style={{ fontSize: '10px', color: 'var(--text-secondary)', opacity: 0.5 }}>·</span>
-          <span style={{ fontSize: '10px', color: 'var(--text-secondary)', letterSpacing: '0.04em' }}>
+          <span style={{ fontSize: '10px', color: '#1A1A18', letterSpacing: '0.04em', fontFamily: 'var(--font-main)', background: '#B8D4D1', padding: '4px 8px' }}>
             {exercise.topic}
           </span>
-          <span
-            style={{
-              marginLeft: 'auto',
-              fontSize: '11px',
-              color: 'var(--text-secondary)',
-              fontWeight: 300,
-            }}
-          >
-            {durationMin} мин
-          </span>
         </div>
-
-        {/* Title */}
-        <p
-          style={{
-            fontSize: '16px',
-            fontWeight: 400,
-            color: 'var(--text-primary)',
-            lineHeight: 1.3,
-            margin: 0,
-          }}
-        >
-          {exercise.title}
-        </p>
-
-        {/* Description */}
-        <p
-          style={{
-            fontSize: '13px',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.55,
-            margin: 0,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }}
-        >
-          {exercise.description}
-        </p>
       </div>
     </Link>
   )
