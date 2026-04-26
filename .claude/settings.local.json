@@ -9,7 +9,20 @@
       "Bash(SUPABASE_ACCESS_TOKEN=sbp_720db8878f3e6df164a200545f35db50ed44ffcb npx supabase gen types typescript --project-id rgjiwasafajndynlcyul)",
       "mcp__Claude_Preview__preview_start",
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)"
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(npx tsc:*)",
+      "Bash(vercel --version)",
+      "Bash(vercel whoami:*)",
+      "Bash(npm i:*)",
+      "Bash(vercel login:*)",
+      "Bash(vercel link:*)",
+      "Bash(vercel env:*)",
+      "Bash(vercel --prod)",
+      "Bash(git commit -m ' *)",
+      "Bash(where npx *)",
+      "Bash(where python *)",
+      "Bash(where node *)"
     ]
   }
 }
